@@ -10,8 +10,6 @@ function App() {
 
   const [weatherData, setWeatherData] = useState(null);
 
-  const [weatherLoaded, setWeatherLoad] = useState(false);
-
   const [serviceOrCityChanged, setServiceOrCityChanged] = useState(false);
 
   useEffect(() => {
@@ -24,7 +22,6 @@ function App() {
         setWeatherData(newData.weather);
         setServiceOrCityChanged(false);
       }
-      setWeatherLoad(true);
     };
     fetchCache();
   }, []);
@@ -39,7 +36,6 @@ function App() {
       }
       const weather = await fetchData();
       setWeatherData(weather);
-      setWeatherLoad(true);
       setServiceOrCityChanged(false);
     };
     fetchNewData();
@@ -50,7 +46,6 @@ function App() {
       <Header />
       <WeatherCard
         weatherData={{...weatherData}}
-        weatherLoaded={weatherLoaded}
         setServiceOrCityChanged={setServiceOrCityChanged}
       />
       <TownInfo setServiceOrCityChanged={setServiceOrCityChanged} />
