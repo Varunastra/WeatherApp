@@ -1,0 +1,38 @@
+.weather-info {
+  border-radius: 4px;
+  width: 150px;
+  max-height: 200px;
+  display: flex;
+  flex-direction: column;
+  background-color: #00e1ff;
+  margin: 20px;
+  padding: 20px;
+}
+
+.weather-state {
+  display: flex;
+  &__img {
+    width: 100px;
+    height: 100px;
+  }
+  &__temp {
+    font-weight: 600;
+    font-size: large;
+    margin: 2px;
+  }
+}
+
+.weather-card {
+  display: flex;
+  justify-content: center;
+}
+
+.weather-service {
+  &__select {
+    border: 2px dotted pink;
+  }
+  &__text {
+      color: white;
+      margin-bottom: 4px;
+  }
+}
