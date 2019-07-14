@@ -49,7 +49,7 @@ function App() {
     <div className="App">
       <Header />
       <WeatherCard
-        weatherData={weatherData}
+        weatherData={{...weatherData}}
         weatherLoaded={weatherLoaded}
         setServiceOrCityChanged={setServiceOrCityChanged}
       />
