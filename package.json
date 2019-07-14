@@ -22,7 +22,7 @@
   "eslintConfig": {
     "extends": "react-app"
   },
-  "homepage": "https://varunastra.github.io/weatherapp",
+  "homepage": "https://varunastra.github.io/WeatherApp",
   "browserslist": {
     "production": [
       ">0.2%",
