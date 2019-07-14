@@ -20,12 +20,11 @@ function App() {
       if (!newData) {
         const weather = await fetchData();
         setWeatherData(weather);
-        setWeatherLoad(true);
       } else {
         setWeatherData(newData.weather);
-        setWeatherLoad(true);
         setServiceOrCityChanged(false);
       }
+      setWeatherLoad(true);
     };
     fetchCache();
   }, []);

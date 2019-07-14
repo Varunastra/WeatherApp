@@ -44,7 +44,7 @@ export async function getWeather(weatherService, city) {
 
 export async function getApixuWeather(city) {
   const weatherResponse = await fetch(
-    "http://api.apixu.com/v1/current.json?key=e87d9cd4f07e489c9d2130809191307&q=" +
+    "https://api.apixu.com/v1/current.json?key=e87d9cd4f07e489c9d2130809191307&q=" +
       city
   );
   const weather = await weatherResponse.json().then(data => data.current);
@@ -58,7 +58,7 @@ export async function getApixuWeather(city) {
 
 export async function getOpenWeather(city) {
   const weatherResponse = await fetch(
-    `http://api.openweathermap.org/data/2.5/weather?q=${city},by&appid=c2497fd80f1d8f3c66e7df5111b141fe`,
+    `https://api.openweathermap.org/data/2.5/weather?q=${city},by&appid=c2497fd80f1d8f3c66e7df5111b141fe`,
     {
       accept: "application/json",
     }
