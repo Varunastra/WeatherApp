@@ -8,7 +8,6 @@ export async function getCity() {
     }
   );
   const city = await cityResponse.json().then(data => data.city);
-  console.log(city);
   localStorage.setItem("city", city);
   return city;
 }
@@ -37,7 +36,7 @@ function getApixuWeather(city, callback) {
   return fetch(
     "https://api.apixu.com/v1/current.json?key=e87d9cd4f07e489c9d2130809191307&q=" +
     city
-  ).then(async response  => response.ok ? callback(response) : null);
+  ).then(response  => response.ok ? callback(response) : null);
 }
 
 async function parseApixuData(response) {

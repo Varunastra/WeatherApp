@@ -16,11 +16,12 @@ export async function fetchData(city = null, service = "OpenWeather") {
   return newWeather;
 }
 
-export function getCache(time = 7200) {
+export function getCache() {
+  const cacheTime = 2 * 60 * 60;
   const storageTime = localStorage.getItem("time");
   if (storageTime) {
     const difference = (Date.now() - storageTime) / 1000;
-    if (difference < time) {
+    if (difference < cacheTime) {
       const weather = JSON.parse(localStorage.getItem("data"));
       const service = localStorage.getItem("service");
       return { weather, service };
