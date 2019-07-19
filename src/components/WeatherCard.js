@@ -3,10 +3,8 @@ import "./scss/WeatherCard.scss";
 
 function WeatherCard(props) {
   const handleChange = event => {
-    localStorage.setItem("service", event.target.value);
-    props.setServiceOrCityChanged(true);
+    props.setService(event.target.value);
   };
-  const service = localStorage.getItem("service") || "not set";
   return (
     <div>
       <div className="weather-service">
@@ -14,7 +12,7 @@ function WeatherCard(props) {
         <select
           className="weather-service__select"
           onChange={handleChange}
-          value={service}
+          value={props.service}
         >
           <option value="OpenWeather">OpenWeather</option>
           <option value="ApixuWeather">ApixuWeather</option>

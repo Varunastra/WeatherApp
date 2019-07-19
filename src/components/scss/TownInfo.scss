@@ -1,10 +1,23 @@
 .town-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: white;
   &__text {
-    color: white;
     margin-bottom: 4px;
   }
-  &__select {
-    margin-bottom: 40px;
+  &__input {
+    margin: 5px;
+    padding: 2px;
     border: dotted 2px teal;
+  }
+  &__error {
+    color: red;
+    margin-bottom: 10px;
+  }
+  &__select {
+    margin-top: 5px;
+    margin-bottom: 40px;
+    border: dotted 2px palegreen;
   }
 }

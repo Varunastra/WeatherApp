@@ -2,25 +2,27 @@ import React, { useState, useEffect, useRef } from "react";
 import Header from "./components/Header";
 import TownInfo from "./components/TownInfo";
 import "./App.scss";
-import { getCache } from "./APIrequests";
-import { fetchData } from "./fetchData";
+import { fetchData, getCache } from "./fetchData";
 import WeatherCard from "./components/WeatherCard";
 
 function App() {
 
   const [weatherData, setWeatherData] = useState(null);
 
-  const [serviceOrCityChanged, setServiceOrCityChanged] = useState(false);
+  const [city, setCity] = useState(localStorage.getItem("city"));
+
+  const [service, setService] = useState(localStorage.getItem("service"));
+
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     const fetchCache = async () => {
-      const newData = getCache(7200);
+      const newData = getCache();
       if (!newData) {
         const weather = await fetchData();
         setWeatherData(weather);
       } else {
         setWeatherData(newData.weather);
-        setServiceOrCityChanged(false);
       }
     };
     fetchCache();
@@ -34,21 +36,28 @@ function App() {
         isFirstRun.current = false;
         return;
       }
-      const weather = await fetchData();
-      setWeatherData(weather);
-      setServiceOrCityChanged(false);
+      const weather = await fetchData(city, service);
+      if (weather.error) {
+        setError(weather.error);
+      }
+      else {
+        setWeatherData(weather);
+        setError(null);
+      }
     };
     fetchNewData();
-  }, [serviceOrCityChanged]);
+  }, [city, service]);
 
   return (
     <div className="App">
       <Header />
       <WeatherCard
-        weatherData={{...weatherData}}
-        setServiceOrCityChanged={setServiceOrCityChanged}
+        weatherData={{ ...weatherData }}
+        service={service}
+        setService={setService}
       />
-      <TownInfo setServiceOrCityChanged={setServiceOrCityChanged} />
+      <TownInfo city={city} setCity={setCity} error={error}
+      />
     </div>
   );
 }
