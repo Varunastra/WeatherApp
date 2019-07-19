@@ -9,9 +9,9 @@ function App() {
 
   const [weatherData, setWeatherData] = useState(null);
 
-  const [city, setCity] = useState(localStorage.getItem("city"));
+  const [city, setCity] = useState("");
 
-  const [service, setService] = useState(localStorage.getItem("service"));
+  const [service, setService] = useState("OpenWeather");
 
   const [error, setError] = useState(null);
 
@@ -24,6 +24,8 @@ function App() {
       } else {
         setWeatherData(newData.weather);
       }
+      setCity(localStorage.getItem("city"));
+      setService(localStorage.getItem("service"));
     };
     fetchCache();
   }, []);

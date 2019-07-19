@@ -54,7 +54,7 @@ async function parseApixuData(response) {
 
 function getOpenWeather(city, callback) {
   return fetch(
-    `https://api.openweathermap.org/data/2.5/weather?q=${city},by&appid=c2497fd80f1d8f3c66e7df5111b141fe`,
+    `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=c2497fd80f1d8f3c66e7df5111b141fe`,
     {
       accept: "application/json",
     }
