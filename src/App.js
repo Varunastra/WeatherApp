@@ -58,7 +58,7 @@ function App() {
         service={service}
         setService={setService}
       />
-      <TownInfo city={city} setCity={setCity} error={error}
+      <TownInfo city={city} setCity={setCity} error={error} setError={setError}
       />
     </div>
   );
